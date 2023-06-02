@@ -1,7 +1,10 @@
 import sys
 import os
+import openpyxl
 from PySide6 import QtUiTools, QtGui
 from PySide6.QtWidgets import QApplication, QMainWindow
+
+
 
 class MainView(QMainWindow):    
     def __init__(self):
@@ -10,14 +13,37 @@ class MainView(QMainWindow):
 
     def setupUI(self):
         global UI_set
+        A=[]
+
+        wb = openpyxl.load_workbook("C:/Users/dnwls/WRP/engword.xlsx")
+        wb_sheet = wb.active
+        for row in wb_sheet:
+            if row[0].value == None:
+                break
+            A.append(row[0].value)
 
         UI_set = QtUiTools.QUiLoader().load(resource_path("WRP_Start.ui"))
+        
+        UI_set.meanBotton.clicked.connect(self.Mean)
+        UI_set.successBotton.clicked.connect(self.Mean)
+        UI_set.nextBotton.clicked.connect(self.Wordlist)
+        #UI_set.Chapter.setText(wb.sheetnames)
+        
         self.setCentralWidget(UI_set)
         self.setWindowTitle("UI TEST")
         self.setWindowIcon(QtGui.QPixmap(resource_path("./images/word.png")))
         self.setGeometry(100,50,300,200)
         self.show()
- 
+    
+    def Mean (self):
+        UI_set.mean.setText("mean")
+        UI_set.phonetic.setText("발음")
+    
+    def Wordlist(self):
+        UI_set.mean.clear()
+        UI_set.phonetic.clear()
+        for i in A:
+            UI_set.Word.setText(A[i].value)
 
 #파일 경로
 #pyinstaller로 원파일로 압축할때 경로 필요함
@@ -34,14 +60,6 @@ if __name__ == '__main__':
     sys.exit(app.exec())
 
 
-import openpyxl
 
-wb = openpyxl.load_workbook("C:/Users/dnwls/WRP/engword.xlsx")
-wb_sheet = wb.active
-
-for row in wb_sheet:
-    if row[0].value == None:
-        break
-    print(row[0].value, row[1].value, row[2].value)
 
 wb.close()
