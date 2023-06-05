@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>274</width>
+    <height>375</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="Chapter">
+      <property name="text">
+       <string>Chapter</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="phonetic"/>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="Word"/>
+    </item>
+    <item>
+     <widget class="QTextBrowser" name="mean"/>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="meanBotton">
+        <property name="text">
+         <string>뜻</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="successBotton">
+        <property name="text">
+         <string>암기 완료</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="nextBotton">
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actiondfdf_2">
+   <property name="text">
+    <string>dfdf</string>
+   </property>
+  </action>
+  <action name="actioncvcvc">
+   <property name="text">
+    <string>cvcvc</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>meanBotton</tabstop>
+  <tabstop>successBotton</tabstop>
+  <tabstop>nextBotton</tabstop>
+  <tabstop>phonetic</tabstop>
+  <tabstop>Word</tabstop>
+  <tabstop>mean</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

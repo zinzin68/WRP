@@ -6,78 +6,60 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
-    <height>681</height>
+    <width>365</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="Chapter">
+     <widget class="QLabel" name="Title">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
       <property name="text">
-       <string>Chapter</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:700;&quot;&gt;Word Repeat Program&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+      <property name="indent">
+       <number>-6</number>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QTextBrowser" name="phonetic"/>
-    </item>
-    <item>
-     <widget class="QTextBrowser" name="Word"/>
-    </item>
-    <item>
-     <widget class="QTextBrowser" name="mean"/>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="meanBotton">
-        <property name="text">
-         <string>뜻</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="successBotton">
-        <property name="text">
-         <string>암기 완료</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="nextBotton">
-        <property name="text">
-         <string>Next</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QCommandLinkButton" name="start">
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Start!!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Start!!</string>
+      </property>
+      <property name="autoRepeat">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actiondfdf_2">
-   <property name="text">
-    <string>dfdf</string>
-   </property>
-  </action>
-  <action name="actioncvcvc">
-   <property name="text">
-    <string>cvcvc</string>
-   </property>
-  </action>
  </widget>
- <tabstops>
-  <tabstop>meanBotton</tabstop>
-  <tabstop>successBotton</tabstop>
-  <tabstop>nextBotton</tabstop>
-  <tabstop>phonetic</tabstop>
-  <tabstop>Word</tabstop>
-  <tabstop>mean</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
