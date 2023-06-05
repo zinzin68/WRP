@@ -6,19 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>365</width>
-    <height>600</height>
+    <width>307</width>
+    <height>382</height>
    </rect>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>images/word.png</normaloff>images/word.png</iconset>
+  </property>
+  <property name="whatsThis">
+   <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="Title">
       <property name="enabled">
        <bool>false</bool>
@@ -40,7 +47,7 @@
       </property>
      </widget>
     </item>
-    <item>
+    <item row="1" column="0">
      <widget class="QCommandLinkButton" name="start">
       <property name="acceptDrops">
        <bool>true</bool>

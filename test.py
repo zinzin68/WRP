@@ -1,6 +1,6 @@
 import openpyxl
 
-wb = openpyxl.load_workbook("C:/Users/dnwls/WRP/engword.xlsx")
+wb = openpyxl.load_workbook("C:/Users/dnwls/WRP/wordfile.xlsx")
 wb_sheet = wb.active
 A=[]
 
@@ -9,4 +9,4 @@ for row in wb_sheet:
         break
     A.append(row[0].value)
 
-print (A[5])
+A
