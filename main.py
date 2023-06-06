@@ -40,7 +40,6 @@ class MainView(QMainWindow):
             Main.wordList.addItem(i)
         
         Main.wordList.itemDoubleClicked.connect(self.wordplace)
-        
 
         #Main.addButton.clicked.connect(self.addsheet)
 
@@ -57,11 +56,9 @@ class MainView(QMainWindow):
         print(chap)
         self.Word(chap)
 
-    def next (self):
-           a=1
-           return a
+    def Word (self, chap):
+        global Word
 
-    def Word (self, chapter):
         Word = QtUiTools.QUiLoader().load(resource_path("wrp_word.ui"))
         self.setCentralWidget(Word)
         self.setWindowTitle("Word")
@@ -69,28 +66,25 @@ class MainView(QMainWindow):
         self.resize(270,500)
         self.show()
 
-        if chapter>=0:
-    
-            Word.nextButton.clicked.connect(self.next)
+        if chap>=0:
             
             list = openpyxl.load_workbook('wordfile.xlsx')
             name = list.get_sheet_names()
-            Word.chaptername.setText(name[chapter])
-            sheet = list.get_sheet_by_name(name[chapter])
+            Word.chaptername.setText(name[chap])
+            sheet = list.get_sheet_by_name(name[chap])
+
             count =0
             for row in sheet:
                     count +=1 #전체 단어 개수
+            
             i=1
             while i<=count:
                     Word.word.setText(sheet.cell(row=i,column=1).value)
                     Word.means.setText(sheet.cell(row=i,column=2).value)
-                    if (int(input())==1):
+                    if (Word.nextButton.clicked(True)):
                             i+=1
                     else:
                             break
-        
-            
-        
 
         #Word.nextButton.clicked.connect(self.wordshow)
 
