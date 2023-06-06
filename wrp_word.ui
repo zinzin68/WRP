@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>306</width>
-    <height>402</height>
+    <height>263</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,23 +16,43 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="4" column="0">
+     <widget class="QTextBrowser" name="mean"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="chaptername">
+      <property name="text">
+       <string>Chapter</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="word">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QTextBrowser" name="wordView"/>
+    </item>
+    <item row="5" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="meanBotton">
+       <widget class="QPushButton" name="meanButton">
         <property name="text">
          <string>뜻</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="successBotton">
+       <widget class="QPushButton" name="successButton">
         <property name="text">
          <string>암기 완료</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="nextBotton">
+       <widget class="QPushButton" name="nextButton">
         <property name="text">
          <string>Next</string>
         </property>
@@ -40,19 +60,10 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
-     <widget class="QTextBrowser" name="phonetic"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QTextBrowser" name="mean"/>
-    </item>
     <item row="2" column="0">
-     <widget class="QTextBrowser" name="Word"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="Chapter">
+     <widget class="QLabel" name="means">
       <property name="text">
-       <string>Chapter</string>
+       <string>TextLabel</string>
       </property>
      </widget>
     </item>
@@ -99,11 +110,10 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>meanBotton</tabstop>
-  <tabstop>successBotton</tabstop>
-  <tabstop>nextBotton</tabstop>
-  <tabstop>phonetic</tabstop>
-  <tabstop>Word</tabstop>
+  <tabstop>meanButton</tabstop>
+  <tabstop>successButton</tabstop>
+  <tabstop>nextButton</tabstop>
+  <tabstop>wordView</tabstop>
   <tabstop>mean</tabstop>
  </tabstops>
  <resources/>
