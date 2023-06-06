@@ -1,12 +1,24 @@
 import openpyxl
 
-wb = openpyxl.load_workbook("C:/Users/dnwls/WRP/wordfile.xlsx")
-wb_sheet = wb.active
-A=[]
+list = openpyxl.load_workbook('wordfile.xlsx')
+sheet = list.get_sheet_names()
+#print(sheet)
 
-for row in wb_sheet:
-    if row[0].value == None:
-        break
-    A.append(row[0].value)
+word = list.get_sheet_by_name(sheet[0])
+count =0
 
-A
+for row in word:
+        count +=1
+
+i=1
+while i<=count:
+        print(word.cell(row=i,column=1).value)
+        #i+=1
+        if (int(input())==1):
+                i+=1
+        else:
+                break
+
+#for i in count:
+        
+

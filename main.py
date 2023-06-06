@@ -38,14 +38,20 @@ class MainView(QMainWindow):
         name = list.get_sheet_names()
         for i in name:
             Main.wordList.addItem(i)
-        Main.wordList.itemClicked.connect(self.wordplace)
+        
+        Main.wordList.itemDoubleClicked.connect(self.Word)
+        #Main.addButton.clicked.connect(self.addsheet)
+
         self.show()
 
-    def wordplace (self):
-        chapter = Main.wordList.currentItem().text()
+    '''def addsheet(self):
+        text,ok = QInputDialog.getText(self, '단어장 추가','단어장 이름:')
         list = openpyxl.load_workbook('wordfile.xlsx')
-        sheet = list.get_sheet_by_name(chapter)
-        print(sheet['A2'].value)
+        list.create_sheet(index=0,title=text)'''
+
+    '''def wordplace (self):
+        chapter = Main.wordList.currentItem()
+        self.Word(chapter)'''
 
 
     def Word (self):
@@ -55,6 +61,27 @@ class MainView(QMainWindow):
         self.setWindowIcon(QtGui.QPixmap(resource_path("./images/word.png")))
         self.resize(270,500)
         self.show()
+
+        chapter = Main.wordList.currentItem()
+        list = openpyxl.load_workbook('wordfile.xlsx')
+        sheet = list.get_sheet_by_name(chapter)
+        count =0
+        for row in sheet:
+                count +=1 #전체 단어 개수
+        i=1
+        while i<=count:
+                print(sheet.cell(row=i,column=1).value)
+                if (int(input())==1):
+                        i+=1
+                else:
+                        break
+        
+
+        #Word.nextButton.clicked.connect(self.wordshow)
+
+    #def wordshow (self):
+        #global sig = not sig
+        
 
     def check (self):
         Check = QtUiTools.QUiLoader().load(resource_path("wrp_check.ui"))
