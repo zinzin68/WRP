@@ -43,16 +43,18 @@ class MainView(QMainWindow):
 
     def delete (self):
         list = openpyxl.load_workbook('wordfile.xlsx')
-        name = list.sheetnames()
+        name = list.get_sheet_names()
         chap = Main.wordList.currentRow()
         print(name[chap])
-        #list.remove_sheet(list[name[chap]])
-        self.Main
+        list.remove_sheet(list.get_sheet_by_name(name[chap]))
+        list.save('wordfile.xlsx')
+        Main.wordList.takeItem(chap)
+        self.Main()
 
     #def wordplace (self,name):
         #chap = Main.wordList.currentRow()
         #self.Word(chap)
-    a=0
+    i=0
     def Word (self):
         global Word
 
@@ -75,32 +77,15 @@ class MainView(QMainWindow):
             count =0
             for row in sheet:
                     count +=1
-            print(count)
             
-            i=1     
-            while i<count :
-                Word.word.setText(sheet.cell(row=i,column=1).value)
-                Word.means.setText(sheet.cell(row=i,column=2).value)
-                Word.nextButton.clicked.connect(add)
-                if (a==1):
-                    i+=1
-                    a=0
-                else:
-                    break
-
-        def add (self):
-            global a
-            a=1        
-
+            Word.nextButton.clicked.connect(self.update(sheet))
         Word.endButton.clicked.connect(self.Main)
+                
     
-    def add (self):
-        self.a=1
-    
-    '''def update (self,sheet):
+    def update (self,sheet):
         self.i +=1
         Word.word.setText(sheet.cell(row=self.i,column=1).value)
-        Word.means.setText(sheet.cell(row=self.i,column=2).value)'''
+        Word.means.setText(sheet.cell(row=self.i,column=2).value)
         
 
 #파일 경로

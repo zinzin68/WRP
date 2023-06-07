@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>346</width>
-    <height>498</height>
+    <width>307</width>
+    <height>341</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/back/images/bgcolor.png);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -97,6 +100,8 @@
   <tabstop>endButton</tabstop>
   <tabstop>nextButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="start.qrc"/>
+ </resources>
  <connections/>
 </ui>
