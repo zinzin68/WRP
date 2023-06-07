@@ -40,6 +40,7 @@ class MainView(QMainWindow):
         
         Main.wordList.itemDoubleClicked.connect(self.Word)
         Main.deleteButton.clicked.connect(self.delete)
+        Main.viewButton.clicked.connect(self.List)
 
     def delete (self):
         list = openpyxl.load_workbook('wordfile.xlsx')
@@ -79,14 +80,52 @@ class MainView(QMainWindow):
                     count +=1
             
             Word.nextButton.clicked.connect(self.update(sheet))
-        Word.endButton.clicked.connect(self.Main)
-                
+        Word.endButton.clicked.connect(self.Main)          
     
     def update (self,sheet):
         self.i +=1
         Word.word.setText(sheet.cell(row=self.i,column=1).value)
         Word.means.setText(sheet.cell(row=self.i,column=2).value)
         
+    def List (self):
+        global List
+
+        List = QtUiTools.QUiLoader().load(resource_path("wrp_list.ui"))
+        self.setCentralWidget(List)
+        self.setWindowTitle("Word List")
+        self.setWindowIcon(QtGui.QPixmap(resource_path("./images/word.png")))
+        self.resize(270,500)
+        self.show()
+        
+        list = openpyxl.load_workbook('wordfile.xlsx')
+        name = list.get_sheet_names()
+        chap = Main.wordList.currentRow()
+        List.Chapter.setText(name[chap])
+
+        sheet = list.get_sheet_by_name(name[chap])
+        count=0
+        for row in sheet:
+            count +=1
+        W=[]
+        for row in sheet:
+            W.append(row[0].value)
+        
+        model =QStandardItemModel()
+        for i in W:
+            model.appendRow(QStandardItem(i))
+        List.wordView.setModel(model)
+
+        M=[]
+        for row in sheet:
+            M.append(row[1].value)
+        
+        model =QStandardItemModel()
+        for i in M:
+            model.appendRow(QStandardItem(i))
+        List.meanView.setModel(model)
+
+        List.backButton.clicked.connect(self.Main)
+
 
 #파일 경로
 #pyinstaller로 원파일로 압축할때 경로 필요함
