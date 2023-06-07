@@ -5,13 +5,12 @@ from PySide6 import QtUiTools, QtGui
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtGui import *
 from PySide6.QtCore import *
+global sig
 
 class MainView(QMainWindow):    
     def __init__(self):
         super().__init__()
         self.setupUI()
-
-    
 
     def setupUI(self):
         global UI_set
@@ -33,31 +32,23 @@ class MainView(QMainWindow):
         self.setWindowTitle("List")
         self.setWindowIcon(QtGui.QPixmap(resource_path("./images/word.png")))
         self.resize(270,500)
+        self.show()
 
         list = openpyxl.load_workbook('wordfile.xlsx')
         name = list.get_sheet_names()
         for i in name:
             Main.wordList.addItem(i)
         
-        Main.wordList.itemDoubleClicked.connect(self.wordplace)
+        Main.wordList.itemDoubleClicked.connect(self.Word)
+        
 
-        #Main.addButton.clicked.connect(self.addsheet)
-
-
-        self.show()
-
-    '''def addsheet(self):
-        text,ok = QInputDialog.getText(self, '단어장 추가','단어장 이름:')
-        list = openpyxl.load_workbook('wordfile.xlsx')
-        list.create_sheet(index=0,title=text)'''
-
-    def wordplace (self,name):
-        chap = Main.wordList.currentRow()
-        print(chap)
-        self.Word(chap)
-
-    def Word (self, chap):
+    #def wordplace (self,name):
+        #chap = Main.wordList.currentRow()
+        #self.Word(chap)
+    
+    def Word (self):
         global Word
+        global i
 
         Word = QtUiTools.QUiLoader().load(resource_path("wrp_word.ui"))
         self.setCentralWidget(Word)
@@ -66,39 +57,40 @@ class MainView(QMainWindow):
         self.resize(270,500)
         self.show()
 
-        if chap>=0:
+        #if chap>=0:
+              
+        list = openpyxl.load_workbook('wordfile.xlsx')
+        name = list.get_sheet_names()
+        chap = Main.wordList.currentRow()
+        Word.chaptername.setText(name[chap])
+        sheet = list.get_sheet_by_name(name[chap])            
+
+        count =0
+        for row in sheet:
+                count +=1 #전체 단어 개수
             
-            list = openpyxl.load_workbook('wordfile.xlsx')
-            name = list.get_sheet_names()
-            Word.chaptername.setText(name[chap])
-            sheet = list.get_sheet_by_name(name[chap])
+        i=1
+        Word.nextButton.clicked.connect(self.update(chap))
 
-            count =0
-            for row in sheet:
-                    count +=1 #전체 단어 개수
+        Word.endButton.clicked.connect(self.Main)
+
+    
+    def update (self,what):
+        global i
+
+        list = openpyxl.load_workbook('wordfile.xlsx')
+        name = list.get_sheet_names()
+        sheet = list.get_sheet_by_name(name[what])
+
+        Word.word.setText(sheet.cell(row=i,column=1).value)
+        Word.means.setText(sheet.cell(row=i,column=2).value)
+        Word.worrd.setText(sheet.cell(row=i,column=1).value)
+        print(i)
+
+        i+=1
+        self.Word()
             
-            i=1
-            while i<=count:
-                    Word.word.setText(sheet.cell(row=i,column=1).value)
-                    Word.means.setText(sheet.cell(row=i,column=2).value)
-                    if (Word.nextButton.clicked(True)):
-                            i+=1
-                    else:
-                            break
 
-        #Word.nextButton.clicked.connect(self.wordshow)
-
-    #def wordshow (self):
-        #global sig = not sig
-        
-
-    def check (self):
-        Check = QtUiTools.QUiLoader().load(resource_path("wrp_check.ui"))
-        self.setCentralWidget(Check)
-        self.setWindowTitle("Check")
-        self.setWindowIcon(QtGui.QPixmap(resource_path("./images/word.png")))
-        self.resize(270,500)
-        self.show()
 
 #파일 경로
 #pyinstaller로 원파일로 압축할때 경로 필요함

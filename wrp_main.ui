@@ -21,9 +21,9 @@
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="addButton">
+       <widget class="QPushButton" name="checkButton">
         <property name="text">
-         <string>추가하기</string>
+         <string>단어 확인</string>
         </property>
        </widget>
       </item>
@@ -37,24 +37,6 @@
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>330</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="actionoption"/>
-    <addaction name="actionmy_word"/>
-   </widget>
-   <addaction name="menuMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionoption">

@@ -18,7 +18,3 @@ while i<=count:
                 i+=1
         else:
                 break
-
-#for i in count:
-        
-
