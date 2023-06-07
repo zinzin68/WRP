@@ -69,23 +69,39 @@ class MainView(QMainWindow):
         list = openpyxl.load_workbook('wordfile.xlsx')
         name = list.get_sheet_names()
         chap = Main.wordList.currentRow()
+        Word.chaptername.setText(name[chap])
 
-        if chap>=0:
-              
-            Word.chaptername.setText(name[chap])
-            sheet = list.get_sheet_by_name(name[chap])            
-
-            count =0
-            for row in sheet:
-                    count +=1
+        sheet = list.get_sheet_by_name(name[chap])
+        count=0
+        for row in sheet:
+            count +=1
+        print(count)
             
-            Word.nextButton.clicked.connect(self.update(sheet))
-        Word.endButton.clicked.connect(self.Main)          
+        global W
+        W=[]
+        for row in sheet:
+            W.append(row[0].value)
+        
+        global M
+        M=[]
+        for row in sheet:
+            M.append(row[1].value)
+
+        self.i=0
+        if self.i < count:
+            Word.nextButton.clicked.connect(self.update)
+            print(self.i)
+        elif self.i==count-1:
+            Word.word.setText("마지막 단어 입니다.")
+            Word.means.setText("마지막 단어 입니다.")
+        
+        Word.endButton.clicked.connect(self.Main)
+        
     
-    def update (self,sheet):
+    def update (self):
+        Word.word.setText(W[self.i])
+        Word.means.setText(M[self.i])
         self.i +=1
-        Word.word.setText(sheet.cell(row=self.i,column=1).value)
-        Word.means.setText(sheet.cell(row=self.i,column=2).value)
         
     def List (self):
         global List
