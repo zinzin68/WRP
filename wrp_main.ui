@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>330</width>
-    <height>570</height>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,13 +20,6 @@
     </item>
     <item row="1" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="checkButton">
-        <property name="text">
-         <string>단어 확인</string>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="QPushButton" name="deleteButton">
         <property name="text">

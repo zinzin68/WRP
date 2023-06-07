@@ -49,6 +49,18 @@
     </item>
     <item row="2" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QCommandLinkButton" name="start">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>120</width>
+        <height>120</height>
+       </size>
+      </property>
       <property name="mouseTracking">
        <bool>false</bool>
       </property>
@@ -74,8 +86,8 @@
        <string/>
       </property>
       <property name="icon">
-       <iconset resource="start.qrc">
-        <normaloff>:/icon/images/start.png</normaloff>:/icon/images/start.png</iconset>
+       <iconset>
+        <normaloff>images/start.png</normaloff>images/start.png</iconset>
       </property>
       <property name="iconSize">
        <size>

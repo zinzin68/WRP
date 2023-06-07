@@ -15,20 +15,20 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0">
+    <item row="3" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QLabel" name="means">
       <property name="styleSheet">
-       <string notr="true">font: 700 12pt &quot;한컴 말랑말랑 Bold&quot;;</string>
+       <string notr="true">font: 700 15pt &quot;맑은 고딕&quot;;</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p style = &quot;text-align : center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="2" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QLabel" name="word">
       <property name="styleSheet">
-       <string notr="true">font: 700 12pt &quot;한컴 말랑말랑 Bold&quot;;</string>
+       <string notr="true">font: 700 15pt &quot;맑은 고딕&quot;;</string>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p style = &quot;text-align : center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -43,17 +43,20 @@
         <height>35</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">font: 700 20pt &quot;맑은 고딕&quot;;</string>
+      </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Chapter&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
+    <item row="4" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="endButton">
         <property name="text">
-         <string> 종료</string>
+         <string>단어 리스트</string>
         </property>
        </widget>
       </item>
@@ -65,9 +68,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="4" column="0">
-     <widget class="QTextBrowser" name="worrd"/>
     </item>
    </layout>
   </widget>

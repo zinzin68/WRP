@@ -5,7 +5,6 @@ from PySide6 import QtUiTools, QtGui
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-global sig
 
 class MainView(QMainWindow):    
     def __init__(self):
@@ -40,15 +39,22 @@ class MainView(QMainWindow):
             Main.wordList.addItem(i)
         
         Main.wordList.itemDoubleClicked.connect(self.Word)
-        
+        Main.deleteButton.clicked.connect(self.delete)
+
+    def delete (self):
+        list = openpyxl.load_workbook('wordfile.xlsx')
+        name = list.sheetnames()
+        chap = Main.wordList.currentRow()
+        print(name[chap])
+        #list.remove_sheet(list[name[chap]])
+        self.Main
 
     #def wordplace (self,name):
         #chap = Main.wordList.currentRow()
         #self.Word(chap)
-    
+    a=0
     def Word (self):
         global Word
-        global i
 
         Word = QtUiTools.QUiLoader().load(resource_path("wrp_word.ui"))
         self.setCentralWidget(Word)
@@ -57,40 +63,45 @@ class MainView(QMainWindow):
         self.resize(270,500)
         self.show()
 
-        #if chap>=0:
-              
         list = openpyxl.load_workbook('wordfile.xlsx')
         name = list.get_sheet_names()
         chap = Main.wordList.currentRow()
-        Word.chaptername.setText(name[chap])
-        sheet = list.get_sheet_by_name(name[chap])            
 
-        count =0
-        for row in sheet:
-                count +=1 #전체 단어 개수
+        if chap>=0:
+              
+            Word.chaptername.setText(name[chap])
+            sheet = list.get_sheet_by_name(name[chap])            
+
+            count =0
+            for row in sheet:
+                    count +=1
+            print(count)
             
-        i=1
-        Word.nextButton.clicked.connect(self.update(chap))
+            i=1     
+            while i<count :
+                Word.word.setText(sheet.cell(row=i,column=1).value)
+                Word.means.setText(sheet.cell(row=i,column=2).value)
+                Word.nextButton.clicked.connect(add)
+                if (a==1):
+                    i+=1
+                    a=0
+                else:
+                    break
+
+        def add (self):
+            global a
+            a=1        
 
         Word.endButton.clicked.connect(self.Main)
-
     
-    def update (self,what):
-        global i
-
-        list = openpyxl.load_workbook('wordfile.xlsx')
-        name = list.get_sheet_names()
-        sheet = list.get_sheet_by_name(name[what])
-
-        Word.word.setText(sheet.cell(row=i,column=1).value)
-        Word.means.setText(sheet.cell(row=i,column=2).value)
-        Word.worrd.setText(sheet.cell(row=i,column=1).value)
-        print(i)
-
-        i+=1
-        self.Word()
-            
-
+    def add (self):
+        self.a=1
+    
+    '''def update (self,sheet):
+        self.i +=1
+        Word.word.setText(sheet.cell(row=self.i,column=1).value)
+        Word.means.setText(sheet.cell(row=self.i,column=2).value)'''
+        
 
 #파일 경로
 #pyinstaller로 원파일로 압축할때 경로 필요함
